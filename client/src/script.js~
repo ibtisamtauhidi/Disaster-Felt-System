@@ -1,0 +1,100 @@
+function ajax_send(url) {
+	var xmlhttp;
+	xmlhttp=new XMLHttpRequest(); 
+  	xmlhttp.open("GET",url,false);
+	xmlhttp.send();
+	if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+		document.getElementById('article').innerHTML=xmlhttp.responseText;
+	}
+}
+function init() {
+		document.getElementById('article').innerHTML="<div id='felt_list' class='list' onmouseover='mouseover(this.id)' onmouseout='mouseout(this.id)' onClick='send_init()'>I Felt It</div><div id='view_list' class='list' onmouseover='mouseover(this.id)' onmouseout='mouseout(this.id)' onClick='load(this.id)'>View Reports</div><div id='what_list' class='list' onmouseover='mouseover(this.id)' onmouseout='mouseout(this.id)' onClick='what_init()'>What To Do</div><div id='about_list' class='list' onmouseover='mouseover(this.id)' onmouseout='mouseout(this.id)' onClick='about_init()'>About This App</div>";
+}
+function send_init() {
+		document.getElementById('article').innerHTML="<form name='questionnaire'><div id='type_list' class='list'>Select Report Type :<select name='calamity_type' id='calamity_type'><option value='1'>Earthquake</option><option value='2'>Tsunami</option><option value='3'>Flood</option><option value='4'>Fire</option><option value='5'>Cyclone/Hurricane/Tornado</option><option value='6'>Others</option></select></div><div id='hurt_box' class='qlist' onmouseover='mouseover(this.id)' onmouseout='mouseout(this.id)' onClick='check_hurt()'><input type='checkbox' class='questions' name='hurt' id='hurt' value='hurt'/>Are you hurt?</div><div id='help_box' class='qlist' onmouseover='mouseover(this.id)' onmouseout='mouseout(this.id)' onClick='check_help()'><input type='checkbox' class='questions' name='help' id='help' value='help'/>Can you help others?</div><div id='casuality_box' class='qlist' onmouseover='mouseover(this.id)' onmouseout='mouseout(this.id)' onClick='check_casuality()'><input type='checkbox' class='questions' name='casuality' id='casuality' value='casuality'/>Is there any casuality around you?</div><div id='comment_box' class='list' onmouseover='mouseover(this.id)' onmouseout='mouseout(this.id)'><textarea rows='2' class='questions_text' name='comment' id='comment' value=''>Add a comment.</textarea></div><input type='button' class='submit' onclick='start_send()' value='Next >>'/></form>";
+}
+function about_init() {
+		document.getElementById('article').innerHTML="<div id='felt_list' class='text_big'><br /><br /><br /><p>I made this HTML 5 app in response to two problems, namely Quake Felt Alert and Disaster Safe.</p><p>This app is deployed at http://www.blahblah.com/</p><p>Thanks - Syed Ibtisam Tauhidi</p><br /><br /></div><button id='what_cyclone' class='submit' onclick='init()'>&lt;&lt; Back</button>";
+}
+function load(id) {
+	if (id=="felt_list") {
+		page="./send.html";
+	} else if (id=="view_list") {
+		alert("Abe... hoa nai be!!!\nTranslation : Not yet complete");
+	} else if (id=="what_list") {
+		page="./what.html";
+	}
+	top.location.href=page;
+}
+
+function validate() {
+	var latitude;
+	var longitude;
+	var url="http://localhost/rhok/server/save.php?type="+window.document.questionnaire.calamity_type.value+"&value=";
+	var value=0;
+	var comment="";
+	var hurt="No";
+	var help="No";
+	var casuality="No";
+	latitude=51.7653256;
+	longitude=-76.6765544;
+	if (window.document.questionnaire.hurt.checked == true) {
+		value+=1;
+		hurt="Yes";
+	}
+	if (window.document.questionnaire.help.checked == true) {
+		value+=10;
+		help="Yes";
+	}
+	if (window.document.questionnaire.casuality.checked == true) {
+		value+=100;
+		casuality="Yes";
+	}
+	url+=value;
+	if ((latitude)&&(longitude)) {
+		url+="&lat="+latitude+"&lon="+longitude;
+	} else {
+		alert("ooops");
+	}
+	warn="Latitude : "+latitude+"\nLongitude : "+longitude+"\nAre You Hurt : "+hurt+"\nCan you help : "+help+"\nIs there casuality around you : "+casuality;
+	if ((window.document.questionnaire.comment.value != "Add a comment.")&&(window.document.questionnaire.comment.value)) {
+		warn+="\n----------------------------\nYour comment:\n"+window.document.questionnaire.comment.value;
+		url+="&comment="+escape(window.document.questionnaire.comment.value);
+	}
+
+	alert(warn);
+	return url;
+}
+function start_send() {
+	var i=validate();
+	ajax_send(i);
+}
+function check_help() {
+	if (window.document.questionnaire.help.checked == true) {
+		window.document.questionnaire.help.checked=false;
+	} else {
+		window.document.questionnaire.help.checked=true;
+	}
+}
+
+function check_hurt() {
+	if (window.document.questionnaire.hurt.checked == true) {
+		window.document.questionnaire.hurt.checked=false;
+	} else {
+		window.document.questionnaire.hurt.checked=true;
+	}
+}
+
+function check_casuality() {
+	if (window.document.questionnaire.casuality.checked == true) {
+		window.document.questionnaire.casuality.checked=false;
+	} else {
+		window.document.questionnaire.casuality.checked=true;
+	}
+}
+function mouseover(id) {
+document.getElementById(id).style.backgroundColor='#990000';
+}
+function mouseout(id) {
+document.getElementById(id).style.backgroundColor='#fff';
+}

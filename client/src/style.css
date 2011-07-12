@@ -1,0 +1,90 @@
+* {
+	margin: 0px;
+	}
+
+html, body {
+	height: 100%;
+	background: #BB4F1F;	
+	margin: 0;
+	padding: 0;
+	}
+	
+#header {
+	height: 3%;
+	width: 98%;
+	padding: 1%;
+	}
+	
+#article {
+	background: #23141B;
+	width: 98%;
+	padding: 1%;
+	
+}
+#footer {
+	width: 100%;
+	height: 10%;
+	}	
+
+#rhok_logo {
+	margin: 1%;
+	height: 32px;
+	}
+
+
+.questions {
+	color: #fff;
+	margin-top: 1%;
+	margin-left: 1%;
+	margin-right: 2%;
+	float: left;
+	display: inline;
+	}
+
+.questions_text {
+	width: 99%;
+	float: left;
+	display: inline;
+	}
+.question_text {
+	margin-top: 1%;
+	}
+.submit {
+	width: 100%;
+	height: 40px;
+}
+
+#calamity_type {
+	width: 100%;
+	height: 32px;
+}
+.list {
+	height: 50px;
+	background: white;
+	width: 98%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	padding: 1%;
+	}
+
+.qlist {
+	height: 40px;
+	background: white;
+	width: 98%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	padding: 1%;
+	}
+.text_big {
+	background: white;
+	width: 98%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	padding: 1%;
+	}
+p {
+	padding: 1%;
+}
+.bold {
+	font-weight: bold;
+}

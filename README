@@ -1,0 +1,14 @@
+Disaster Felt System
+************************************************
+************************************************
+HTML 5 (GeoLocation, localStorage, CacheManifest), JavaScript, AJAX, Php, MySQL
+
+
+External Library : geo.js (to make it compitable with non-HTML5 devices like Nokia, Blackberry, PalmOS and desktop browsers running Google Gears.)
+
+
+This app lets a victim of natural disaster upload their location and other data using a GPS & HTML5 enabled device (eg. Android, iPhone) to a server.
+
+This data can be retrieved by a rescue worker to locate the user using Vincenty's Inverse Formula (to find distance with 0.05mm accuracy) and static Google Maps API (to locate victim on map).
+
+The client and server are seperated and hence it can also be packed as widgets (web-apps that can be installed and which behave like native app). I already packed it for S60 5th Edition.

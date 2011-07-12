@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dive Into HTML5</title>
+	<script type="text/javascript" src="var/script.js"></script>
+	<link href="var/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<header>
+	Disaster Felt Report
+	</header>
+
+	<article>
+	Lorem Ispum Dorel
+	</article>
+
+	<footer>
+		<img src="./img/logo.png" alt="RHoK 03" />
+	</footer>
+</body>
+</html>

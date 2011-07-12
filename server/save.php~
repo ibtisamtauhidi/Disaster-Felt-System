@@ -1,0 +1,7 @@
+<div id="felt_list">
+		<div class="list"><span id="text1">Your report was registered at </span><span id="text2">12345678</span></div>
+		<div class="list"><span id="text1">Your report ID is </span><span id="text2">12345678</span></div>
+		<button class="submit" onclick="top.location.href='./what.html'">What to Do Next</button>
+		<button class="submit">Warn Friends on Facebook</button>
+		<button class="submit">Find me on Google Maps</button>
+</div>
